@@ -1,6 +1,6 @@
 import {PrimaryGeneratedColumn, Column, Entity, ManyToMany, JoinTable} from 'typeorm'
 import { Event } from 'src/events/entities/event.entity'
-
+//
 
 @Entity()
 export class User {
@@ -22,7 +22,6 @@ export class User {
 
     @ManyToMany(() => Event)
     @JoinTable()
-    events: string
-    
+    events: string 
     
 }
