@@ -24,5 +24,5 @@ export class Event {
     ubication: String
 
     @Column()
-    precio: string
+    price: string
 }
