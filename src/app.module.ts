@@ -4,8 +4,16 @@ import { ShowModule } from './events/events.module';
 import { PersistenceModule } from './persistence/persistence.module';
 import { AuthService } from './auth/auth.service';
 import { AuthModule } from './auth/auth.module';
+import { ConfigModule } from '@nestjs/config';
 
 @Module({
-  imports: [UsersModule, ShowModule, PersistenceModule, AuthModule]
+  imports: [
+    ConfigModule.forRoot({
+      isGlobal: true
+    }),
+    UsersModule, 
+    ShowModule, 
+    PersistenceModule, 
+    AuthModule]
 })
 export class AppModule {}
