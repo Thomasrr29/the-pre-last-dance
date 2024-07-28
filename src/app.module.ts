@@ -5,6 +5,7 @@ import { PersistenceModule } from './persistence/persistence.module';
 import { AuthService } from './auth/auth.service';
 import { AuthModule } from './auth/auth.module';
 import { ConfigModule } from '@nestjs/config';
+import { ExceptionFilterModule } from './common/exception/exception.filters.module';
 
 @Module({
   imports: [
@@ -14,6 +15,7 @@ import { ConfigModule } from '@nestjs/config';
     UsersModule, 
     ShowModule, 
     PersistenceModule, 
-    AuthModule]
+    AuthModule,
+    ExceptionFilterModule]
 })
 export class AppModule {}
