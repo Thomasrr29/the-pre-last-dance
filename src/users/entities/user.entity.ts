@@ -1,27 +1,31 @@
-import {PrimaryGeneratedColumn, Column, Entity, ManyToMany, JoinTable} from 'typeorm'
-import { Event } from 'src/events/entities/event.entity'
-//
+import {Prop, Schema, SchemaFactory} from '@nestjs/mongoose'
+import { Events } from 'src/events/entities/event.entity'
 
-@Entity()
+
+@Schema()
 export class User {
 
-    @PrimaryGeneratedColumn()
-    id: string
 
-    @Column()
+    @Prop()
     name: string
 
-    @Column()
+    @Prop()
     last_name: string
 
-    @Column()
+    @Prop()
     cellphone: string
 
-    @Column()
+    @Prop()
     email: string
 
-    @ManyToMany(() => Event)
-    @JoinTable()
-    events: string 
+    @Prop()
+    password: string
+
+    @Prop()
+    events: Events[] 
     
 }
+
+
+
+export const userSchema = SchemaFactory.createForClass(User); 
