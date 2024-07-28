@@ -5,6 +5,7 @@ import { User } from './entities/user.entity';
 import { Model } from 'mongoose';
 import { InjectModel } from '@nestjs/mongoose';
 import { AuthService } from 'src/auth/auth.service';
+import { LoginDto } from './dto/login.dto';
 
 @Injectable()
 export class UsersService {
@@ -30,7 +31,7 @@ export class UsersService {
     return await event.save()
   }
 
-  async login(userData: any){
+  async login(userData: LoginDto){
 
     const {email, password} = userData
 
@@ -38,11 +39,11 @@ export class UsersService {
 
     if(!user) throw new NotFoundException(`Please confirm your email. data incorrect`)
 
-    const passwordValidation = await this.authService.comparePasswords(user.password, password) 
+    const passwordValidation = await this.authService.comparePasswords(password, user.password) 
 
     if(!passwordValidation) throw new NotImplementedException(`Please confirm your password. data incorrect`)
 
-    console.log("REGISTRO EXITOSO")
+    return this.authService.loginToken(user)
 
   }
 
