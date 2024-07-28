@@ -1,5 +1,6 @@
 import { IsArray, IsDate, IsNotEmpty, IsString } from "class-validator"
-import { Event } from "../entities/event.entity"
+import { Events } from "../entities/event.entity"
+import { User } from "src/users/entities/user.entity"
 
 export class CreateEventDto {
 
@@ -13,7 +14,7 @@ export class CreateEventDto {
 
     @IsArray()
     @IsNotEmpty()
-    users: [Event]
+    users: [User]
 
     @IsString()
     @IsNotEmpty()

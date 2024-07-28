@@ -1,4 +1,4 @@
-import { IsArray, IsNotEmpty, IsString } from "class-validator"
+import { IsArray, IsDefined, IsHash, IsNotEmpty, IsOptional, IsString, Length, Matches } from "class-validator"
 
 
 export class CreateUserDto {
@@ -18,11 +18,19 @@ export class CreateUserDto {
 
     @IsString()
     @IsNotEmpty()
+    @IsDefined()
+    @Matches(/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/)
     email: string
+
+    @IsString()
+    @IsNotEmpty()
+    @Length(8, 30)
+    password: string
 
     @IsArray()
     @IsNotEmpty()
-    events: string 
+    @IsOptional()
+    events: any[]
     
 
 }
